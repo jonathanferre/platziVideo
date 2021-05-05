@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "start": "webpack serve --mode development --env development"
+    "start": "webpack serve --mode development --env development",
+    "server": "json-server --port 4001 --watch ./server/initialState.json -q"
   },
   "keywords": [],
   "author": "",
