@@ -26,16 +26,16 @@ const Home = ({myList, trends, originals}) => {
 
             <Categories title="Tendencias">
                 <Carousel>
-                    {trends.map(item => 
-                        <CarouselItem key={item.id} {...item} />
+                    {trends.map(item2 => 
+                        <CarouselItem key={item2.id} {...item2} />
                     )}
                 </Carousel>
             </Categories>
 
-            <Categories title="Tendencias">
+            <Categories title="Originals">
                 <Carousel>
-                    {originals.map(item => 
-                        <CarouselItem key={item.id} {...item} />
+                    {originals.map(item3 => 
+                        <CarouselItem key={item3.id} {...item3} />
                     )}
                 </Carousel>
             </Categories>
