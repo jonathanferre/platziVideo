@@ -3,7 +3,7 @@ import { actions } from '../actions/index';
 const reducer = (state, action) => {
     
     switch (action.type) {
-        case 'SET_FAVORITE':
+        case actions.setFavorite:
             const exist = state.myList.find(item => item.id === action.payload.id)
             if (exist) return {...state}
       
@@ -17,6 +17,16 @@ const reducer = (state, action) => {
                 myList: state.myList.filter(items => items.id !== action.payload)
             }
         case actions.loginRequest:
+            return {
+                ...state,
+                user: action.payload,
+            }
+        case actions.logoutRequest:
+            return {
+                ...state,
+                user: action.payload,
+            }
+        case actions.registerRequest:
             return {
                 ...state,
                 user: action.payload,
