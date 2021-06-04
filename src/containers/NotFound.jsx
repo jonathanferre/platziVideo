@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/components/NotFound.scss'
+import '../assets/styles/components/NotFound.scss';
 
 const NotFound = () => (
   <section className="error">
