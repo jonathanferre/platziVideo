@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import "../assets/styles/components/Player.scss";
+import { getVideoSource } from '../actions';
 
 const Player = props => {
     const { id } = props.match.params;
+    const hasPlaying = Object.keys(props.playing).length > 0;
+
+    useLayoutEffect(() => {
+        props.getVideoSource(id);
+    }, [])
     
-    return (
+    return hasPlaying ? (
         <div className="Player">
             <video controls autoPlay>
-                <source src="#" type="video/mp4" />
+                <source src={props.playing.source} type="video/mp4" />
             </video>
             <div className="Player-back">
                 <button type="button" onClick={() => props.history.goBack()}>
@@ -15,9 +23,17 @@ const Player = props => {
                 </button>
             </div>
         </div>
-    );
+    ) : <Redirect to="/404/" />;
 };
 
+const mapStateToProps = state => {
+    return {
+        playing: state.playing,
+    }
+}
 
+const mapDispatchToProps = {
+    getVideoSource,
+}
 
-export default Player;
+export default connect(mapStateToProps, mapDispatchToProps)(Player);
